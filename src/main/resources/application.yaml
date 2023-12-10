@@ -1,0 +1,19 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+#logging:
+#  level:
+#    org.springframework: DEBUG
+#    org.springframework.web.client: TRACE
+
+
+alerts:
+  gotify:
+    token: ${GOTIFY_TOKEN:}
+    url: ${GOTIFY_SERVER:}
+  alertList:
+    - alert-type: cross_up
+      price: 45000
+    - alert-type: cross_down
+      price: 40000
