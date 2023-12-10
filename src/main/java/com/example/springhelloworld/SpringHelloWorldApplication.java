@@ -15,7 +15,15 @@ import java.util.function.Function;
 public class SpringHelloWorldApplication {
 
     public static void main(String[] args) {
+        Runtime runtime = Runtime.getRuntime();
+        long memoryMax = runtime.maxMemory();
+        long memoryUsed = runtime.totalMemory() - runtime.freeMemory();
+
+        log.info("CPU available: {}", runtime.availableProcessors());
+        log.info("Max memory: {}MB", memoryMax / 1024 / 1024);
+        log.info("Memory used: {}MB", memoryUsed / 1024 / 1024);
         var context = SpringApplication.run(SpringHelloWorldApplication.class, args);
+        log.info("Memory used after context init: {}MB", memoryUsed / 1024 / 1024);
 
         var priceFetcher = context.getBean(SymbolPriceFetcher.class);
         priceFetcher.startPriceStream(true);
