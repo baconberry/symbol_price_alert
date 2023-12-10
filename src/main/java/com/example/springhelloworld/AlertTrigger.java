@@ -34,6 +34,11 @@ public final class AlertTrigger implements PriceChangeListener {
         this.crossUpTriggerList = crossUpTriggers;
         this.asyncTaskExecutor = taskExecutor;
         this.crossDownTriggersList = crossDownTriggers;
+        logAlerts(alerts);
+    }
+
+    private void logAlerts(List<Alert> alerts) {
+        alerts.forEach(a -> log.info("Started alert trigger for [{}]", a));
     }
 
     @Override
@@ -69,13 +74,13 @@ public final class AlertTrigger implements PriceChangeListener {
 
     public void triggerAlert(Alert alert, double newPrice) {
         crossUpTriggerList.forEach(trigger ->
-            asyncTaskExecutor.execute(() -> trigger.alert(alert, newPrice))
+                asyncTaskExecutor.execute(() -> trigger.alert(alert, newPrice))
         );
     }
 
     public void triggerAlertDown(Alert alert, double newPrice) {
         crossDownTriggersList.forEach(trigger ->
-            asyncTaskExecutor.execute(() -> trigger.alert(alert, newPrice))
+                asyncTaskExecutor.execute(() -> trigger.alert(alert, newPrice))
         );
     }
 
