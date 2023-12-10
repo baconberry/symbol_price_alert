@@ -16,5 +16,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: |
-          docker build . --tag ghcr.io/baconbearry/symbol_price_alert:${{ github.ref }}
-          docker push ghcr.io/baconbearry/symbol_price_alert:${{ github.ref }}
+          docker build . --tag ghcr.io/baconberry/symbol_price_alert:${{ github.ref_name }}
+          docker push ghcr.io/baconberry/symbol_price_alert:${{ github.ref_name }}
