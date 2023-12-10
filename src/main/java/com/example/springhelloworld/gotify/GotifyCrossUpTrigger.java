@@ -15,7 +15,7 @@ public class GotifyCrossUpTrigger implements CrossUpTrigger {
     }
 
     protected GotifyMessage getMessage(Alert alert, double newPrice) {
-        var title = "BTCUSDT Cross Up";
+        var title = "BTCUSDT Cross UP";
         var message = "Price has crossed %s to %s".formatted(alert.price(), newPrice);
         return new GotifyMessage(title, message);
     }

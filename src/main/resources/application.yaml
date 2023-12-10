@@ -1,7 +1,13 @@
 spring:
+  aot:
+    enabled:true
   threads:
     virtual:
       enabled: true
+
+  main:
+    web-application-type: none
+
 #logging:
 #  level:
 #    org.springframework: DEBUG
