@@ -23,7 +23,7 @@ public class SpringHelloWorldApplication {
         log.info("Max memory: {}MB", memoryMax / 1024 / 1024);
         log.info("Memory used: {}MB", memoryUsed / 1024 / 1024);
         var context = SpringApplication.run(SpringHelloWorldApplication.class, args);
-        log.info("Memory used after context init: {}MB", memoryUsed / 1024 / 1024);
+        log.info("Memory used after context init: {}MB", (runtime.totalMemory() - runtime.freeMemory()) / 1024 / 1024);
 
         var priceFetcher = context.getBean(SymbolPriceFetcher.class);
         priceFetcher.startPriceStream(true);
